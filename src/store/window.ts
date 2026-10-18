@@ -4,7 +4,7 @@ import { immer } from "zustand/middleware/immer";
 export type WindowKey = "finder" | "safari" | "terminal" | "photos" | "contact";
 
 type Window = {
-  data: any;
+  data: unknown;
   zIndex: number;
   isOpen: boolean;
 };
@@ -12,7 +12,7 @@ type Window = {
 interface WindowStore {
   windows: Record<WindowKey, Window>;
   nexZIndex: number;
-  openWindow: (key: WindowKey, data?: any) => void;
+  openWindow: (key: WindowKey, data?: unknown) => void;
   closeWindow: (key: WindowKey) => void;
   focusWindow: (key: WindowKey) => void;
 }
