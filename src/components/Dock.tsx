@@ -4,6 +4,11 @@ import gsap from "gsap";
 import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
 
+type ToggleAppProps = {
+  id: string;
+  canOpen: boolean;
+};
+
 const Dock = () => {
   const dockRef = useRef<HTMLDivElement | null>(null);
 
@@ -57,7 +62,7 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = ({ id: string, canOpen: boolean }) => {
+  const toggleApp = ({ id, canOpen }: ToggleAppProps) => {
     // TODO implement open window logic
   };
 
