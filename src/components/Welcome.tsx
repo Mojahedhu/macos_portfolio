@@ -45,7 +45,7 @@ const Welcome = () => {
             const letterCenter =
               letterRect.left - elementRect.left + letterRect.width / 2;
             const distance = Math.abs(mouseX - letterCenter);
-            const intensity = Math.exp(-(distance ** 2) / 2500);
+            const intensity = Math.exp(-(distance ** 2) / 20000);
             const targetWeight = Math.round(min + (max - min) * intensity);
             gsap.to(letter, {
               duration: 0.2,
@@ -98,7 +98,7 @@ const Welcome = () => {
         {renderText("portfolio.", "text-9xl italic font-georama", 400)}
       </h1>
       <div className="small-screen">
-        <p>This portfolio is design for desktop/tablet screens only.</p>
+        <p>This portfolio is designed for desktop/tablet screens only.</p>
       </div>
     </section>
   );
