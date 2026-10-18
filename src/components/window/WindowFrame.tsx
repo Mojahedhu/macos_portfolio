@@ -49,7 +49,17 @@ const WindowFrame = ({ windowKey, children }: WindowFrameProps) => {
       const element = sectionRef.current;
       if (!element) return;
 
-      Draggable.create(element, { onPress: () => focusWindow(windowKey) });
+      const header = element.querySelector<HTMLElement>("#window-header");
+      const main = document.querySelector<HTMLElement>("main");
+
+      if (!main) return;
+
+      Draggable.create(element, {
+        trigger: header ?? element,
+        bounds: main,
+        edgeResistance: 0.5,
+        onPress: () => focusWindow(windowKey),
+      });
     },
     { scope: sectionRef },
   );
