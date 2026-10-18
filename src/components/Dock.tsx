@@ -1,4 +1,5 @@
 import { dockApps } from "@/constant";
+import useWindowStore, { type WindowKey } from "@/store/window";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
@@ -11,6 +12,9 @@ type ToggleAppProps = {
 
 const Dock = () => {
   const dockRef = useRef<HTMLDivElement | null>(null);
+  const windows = useWindowStore((e) => e.windows);
+  const closeWindow = useWindowStore((s) => s.closeWindow);
+  const openWindow = useWindowStore((s) => s.openWindow);
 
   useGSAP(() => {
     const dock = dockRef.current;
@@ -63,7 +67,19 @@ const Dock = () => {
   }, []);
 
   const toggleApp = ({ id, canOpen }: ToggleAppProps) => {
-    // TODO implement open window logic
+    if (!canOpen) return;
+
+    const window = windows[id];
+    if (!window) {
+      console.warn(`Window with id ${id} not found`);
+      return;
+    }
+
+    if (window.isOpen) {
+      closeWindow(id as WindowKey);
+    } else {
+      openWindow(id as WindowKey);
+    }
   };
 
   return (
