@@ -8,10 +8,9 @@ const WindowControls = ({ windowId }: WindowControlsProps) => {
   const closeWindow = useWindowStore((s) => s.closeWindow);
   return (
     <div id="window-controls">
-      <div
+      <button
+        type="button"
         aria-label="Close"
-        role="button"
-        tabIndex={0}
         className="close"
         onClick={() => closeWindow(windowId)}
       />
