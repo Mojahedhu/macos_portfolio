@@ -1,7 +1,13 @@
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "@/constant";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-export type WindowKey = "finder" | "safari" | "terminal" | "photos" | "contact";
+export type WindowKey =
+  | "finder"
+  | "safari"
+  | "terminal"
+  | "photos"
+  | "contact"
+  | "resume";
 
 type Window = {
   data: unknown;
