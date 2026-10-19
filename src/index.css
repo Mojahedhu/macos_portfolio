@@ -139,7 +139,7 @@ body {
         @apply grid grid-cols-12 space-x-5;
 
         img {
-          @apply size-full rounded-md object-cover;
+          @apply aspect-square size-full rounded-md object-cover;
         }
 
         .content {
@@ -153,8 +153,13 @@ body {
             @apply text-base font-semibold text-gray-800;
           }
 
-          a {
+          a,
+          .url {
             @apply flex items-center gap-3 text-xs text-blue-600 hover:underline;
+          }
+
+          .url {
+            @apply cursor-pointer;
           }
         }
       }
