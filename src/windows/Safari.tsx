@@ -9,8 +9,7 @@ import {
   Share,
   ShieldHalf,
 } from "lucide-react";
-import WindowControls from "./WindowControls";
-import WindowFrame from "./WindowFrame";
+import { WindowControls, WindowFrame } from "@/components/window";
 import { blogPosts } from "@/constant";
 
 const Safari = () => {
