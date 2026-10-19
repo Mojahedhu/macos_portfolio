@@ -1,3 +1,11 @@
+import type {
+  AboutLocation,
+  Locations,
+  ResumeLocation,
+  TrashLocation,
+  WorkLocation,
+} from "@/store/location-types";
+
 const navLinks = [
   {
     id: 1,
@@ -215,7 +223,7 @@ export {
   gallery,
 };
 
-const WORK_LOCATION = {
+const WORK_LOCATION: WorkLocation = {
   id: 1,
   type: "work",
   name: "Work",
@@ -383,7 +391,7 @@ const WORK_LOCATION = {
   ],
 };
 
-const ABOUT_LOCATION = {
+const ABOUT_LOCATION: AboutLocation = {
   id: 2,
   type: "about",
   name: "About me",
@@ -436,7 +444,7 @@ const ABOUT_LOCATION = {
   ],
 };
 
-const RESUME_LOCATION = {
+const RESUME_LOCATION: ResumeLocation = {
   id: 3,
   type: "resume",
   name: "Resume",
@@ -455,7 +463,7 @@ const RESUME_LOCATION = {
   ],
 };
 
-const TRASH_LOCATION = {
+const TRASH_LOCATION: TrashLocation = {
   id: 4,
   type: "trash",
   name: "Trash",
@@ -483,7 +491,7 @@ const TRASH_LOCATION = {
   ],
 };
 
-export const locations = {
+export const locations: Locations = {
   work: WORK_LOCATION,
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
