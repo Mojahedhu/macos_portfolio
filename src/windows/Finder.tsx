@@ -31,8 +31,19 @@ const Finder = () => {
     if ("fileType" in item && item.fileType === "pdf") {
       return openWindow("resume");
     }
-    if (item.kind === "folder" && "type" in item)
-      return setActiveLocationK(item.type as LocationType);
+    if ("fileType" in item && item.fileType === "txt") {
+      return openWindow("txtfile", item);
+    }
+    if ("fileType" in item && item.fileType === "img") {
+      return openWindow("imgfile", item);
+    }
+
+    if (item.kind === "folder") {
+      if ("type" in item) {
+        return setActiveLocationK(item.type as LocationType);
+      }
+      return setActiveLocationK(item.id);
+    }
     if (
       "fileType" in item &&
       ["fig", "url"].includes(item.fileType) &&

@@ -7,7 +7,9 @@ export type WindowKey =
   | "terminal"
   | "photos"
   | "contact"
-  | "resume";
+  | "resume"
+  | "txtfile"
+  | "imgfile";
 
 type Window = {
   data: unknown;
