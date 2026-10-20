@@ -38,7 +38,7 @@ const Finder = () => {
       ["fig", "url"].includes(item.fileType) &&
       "href" in item
     ) {
-      return window.open(item.href, "_blank");
+      return window.open(item.href, "_blank", `noopener,noreferrer`);
     }
   };
 
