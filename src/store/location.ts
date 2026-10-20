@@ -1,23 +1,22 @@
-import { locations } from "@/constant";
 import { create } from "zustand";
 
 import { immer } from "zustand/middleware/immer";
-import type { WorkLocation } from "./location-types";
+import type { LocationType } from "./location-types";
 
 interface LocationState {
-  activeLocation: WorkLocation;
+  activeLocationKey: LocationType | number;
 
-  setActiveLocation: (location: WorkLocation) => void;
+  setActiveLocationKey: (key: LocationType | number) => void;
 }
 
-const DEFAULT_LOCATION = locations.work;
+const DEFAULT_LOCATION = "work";
 
 const useLocationStore = create<LocationState>()(
   immer((set) => ({
-    activeLocation: DEFAULT_LOCATION,
-    setActiveLocation: (location) => {
+    activeLocationKey: DEFAULT_LOCATION,
+    setActiveLocationKey: (key) => {
       set((state) => {
-        state.activeLocation = location;
+        state.activeLocationKey = key;
       });
     },
   })),
