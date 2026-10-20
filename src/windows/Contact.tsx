@@ -20,7 +20,11 @@ const Contact = () => {
           I'm always open to new opportunities and collaborations. If you have a
           project in mind or just want to say hi, feel free to reach out!
         </p>
-        <p>mojahedmohammed@gmail.com</p>
+        <p>
+          <a href="mailto:mojahedmohammed@gmail.com">
+            mojahedmohammed@gmail.com
+          </a>
+        </p>
 
         <ul>
           {socials.map(({ id, bg, link, icon, text }) => (
