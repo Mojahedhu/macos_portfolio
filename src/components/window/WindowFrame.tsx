@@ -21,7 +21,7 @@ const WindowFrame = ({ windowKey, children }: WindowFrameProps) => {
   useGSAP(
     () => {
       const element = sectionRef.current;
-      if (!element || !open) return;
+      if (!element || !isOpen) return;
 
       element.style.display = "block";
 
