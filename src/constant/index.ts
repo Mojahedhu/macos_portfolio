@@ -170,30 +170,37 @@ const photosLinks = [
     id: 1,
     icon: "/icons/gicon1.svg",
     title: "Library",
+    slug: "library"
   },
   {
     id: 2,
     icon: "/icons/gicon2.svg",
     title: "Memories",
+    slug: "memories",
   },
   {
     id: 3,
     icon: "/icons/file.svg",
     title: "Places",
+    slug: "places",
   },
   {
     id: 4,
     icon: "/icons/gicon4.svg",
     title: "People",
+    slug: "people",
+
   },
   {
     id: 5,
     icon: "/icons/gicon5.svg",
     title: "Favorites",
+    slug: "favorites"
   },
 ];
 
-const gallery = [
+const gallery = {
+  library: [
   {
     id: 1,
     img: "/images/gal1.png",
@@ -210,7 +217,12 @@ const gallery = [
     id: 4,
     img: "/images/gal4.png",
   },
-];
+],
+memories: [],
+places : [],
+people : [],
+favorites: []
+}
 
 export {
   navLinks,

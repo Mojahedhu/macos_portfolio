@@ -8,9 +8,14 @@ import React, { useLayoutEffect } from "react";
 interface WindowFrameProps {
   windowKey: WindowKey;
   children: React.ReactNode;
+  className?: string;
 }
 
-const WindowFrame = ({ windowKey, children }: WindowFrameProps) => {
+const WindowFrame = ({
+  windowKey,
+  children,
+  className = "",
+}: WindowFrameProps) => {
   const window = useWindowStore((s) => s.windows[windowKey]);
   const focusWindow = useWindowStore((s) => s.focusWindow);
 
@@ -76,7 +81,7 @@ const WindowFrame = ({ windowKey, children }: WindowFrameProps) => {
       id={windowKey}
       ref={sectionRef}
       style={{ zIndex }}
-      className="absolute"
+      className={`absolute ${className}`}
     >
       {children}
     </section>

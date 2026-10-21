@@ -1,6 +1,6 @@
 import { Draggable } from "gsap/all";
 import "./index.css";
-import { Navbar, Welcome, Dock } from "@/components";
+import { Navbar, Welcome, Dock, Home } from "@/components";
 import {
   Terminal,
   Safari,
@@ -9,6 +9,7 @@ import {
   Text,
   ImageWindowViewer,
   Contact,
+  Image,
 } from "@/windows";
 import gsap from "gsap";
 
@@ -28,6 +29,8 @@ function App() {
         <Text />
         <ImageWindowViewer />
         <Contact />
+        <Image />
+        <Home />
       </main>
     </>
   );
