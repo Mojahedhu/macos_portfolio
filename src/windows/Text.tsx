@@ -15,9 +15,9 @@ const Text = () => {
         <h2>{name}</h2>
       </div>
 
-      <div className="space-y-6 bg-white p-5">
+      <div className="bg-card space-y-6 p-5">
         {image ? (
-          <img src={image} alt={name} className=" w-20 rounded-full" />
+          <img src={image} alt={name} className="w-20 rounded-full" />
         ) : null}
 
         {subtitle ? (
@@ -25,7 +25,7 @@ const Text = () => {
         ) : null}
 
         {Array.isArray(description) && description.length > 0 ? (
-          <div className="space-y-3 text-base leading-relaxed text-gray-800">
+          <div className="text-muted-foreground space-y-3 text-base leading-relaxed">
             {description.map((para, idx) => (
               <p key={`para-${idx}`}>{para}</p>
             ))}

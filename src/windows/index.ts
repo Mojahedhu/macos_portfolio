@@ -5,5 +5,15 @@ import Finder from "./Finder";
 import Text from "./Text";
 import ImageWindowViewer from "./ImageWindowViewer";
 import Contact from "./Contact";
+import Image from "./Image";
 
-export { Terminal, Safari, Resume, Finder, Text, ImageWindowViewer, Contact };
+export {
+  Terminal,
+  Safari,
+  Resume,
+  Finder,
+  Text,
+  ImageWindowViewer,
+  Contact,
+  Image,
+};

@@ -21,7 +21,7 @@ const ImageWindowViewer = () => {
         </div>
       </div>
 
-      <div className="bg-white p-5">
+      <div className="bg-card p-5">
         {imageUrl ? (
           <div className="w-full">
             <img

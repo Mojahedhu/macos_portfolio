@@ -37,10 +37,10 @@ const navIcons = [
     id: 3,
     img: "/icons/user.svg",
   },
-  {
-    id: 4,
-    img: "/icons/mode.svg",
-  },
+  // {
+  //   id: 4,
+  //   img: "/icons/mode.svg",
+  // },
 ];
 
 const dockApps = [
@@ -170,47 +170,58 @@ const photosLinks = [
     id: 1,
     icon: "/icons/gicon1.svg",
     title: "Library",
+    slug: "library",
   },
   {
     id: 2,
     icon: "/icons/gicon2.svg",
     title: "Memories",
+    slug: "memories",
   },
   {
     id: 3,
     icon: "/icons/file.svg",
     title: "Places",
+    slug: "places",
   },
   {
     id: 4,
     icon: "/icons/gicon4.svg",
     title: "People",
+    slug: "people",
   },
   {
     id: 5,
     icon: "/icons/gicon5.svg",
     title: "Favorites",
+    slug: "favorites",
   },
 ];
 
-const gallery = [
-  {
-    id: 1,
-    img: "/images/gal1.png",
-  },
-  {
-    id: 2,
-    img: "/images/gal2.png",
-  },
-  {
-    id: 3,
-    img: "/images/gal3.png",
-  },
-  {
-    id: 4,
-    img: "/images/gal4.png",
-  },
-];
+const gallery = {
+  library: [
+    {
+      id: 1,
+      img: "/images/gal1.png",
+    },
+    {
+      id: 2,
+      img: "/images/gal2.png",
+    },
+    {
+      id: 3,
+      img: "/images/gal3.png",
+    },
+    {
+      id: 4,
+      img: "/images/gal4.png",
+    },
+  ],
+  memories: [],
+  places: [],
+  people: [],
+  favorites: [],
+};
 
 export {
   navLinks,
