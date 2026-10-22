@@ -16,7 +16,7 @@ const THEME_OPTIONS: {
   {
     label: "Light",
     value: "light",
-    icon: (active: boolean) =>
+    icon: (active?: boolean) =>
       active ? (
         <Sun size={14} fill="#ffc030" className="mr-2" />
       ) : (
@@ -26,7 +26,7 @@ const THEME_OPTIONS: {
   {
     label: "Dark",
     value: "dark",
-    icon: (active: boolean) =>
+    icon: (active?: boolean) =>
       active ? (
         <Moon size={14} fill="#ff6157" className="mr-2" />
       ) : (
