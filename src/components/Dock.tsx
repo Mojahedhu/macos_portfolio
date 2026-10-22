@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
 
 type ToggleAppProps = {
-  id: string;
+  id: WindowKey;
   canOpen: boolean;
 };
 
