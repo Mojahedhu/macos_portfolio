@@ -17,7 +17,7 @@ const Resume = () => {
     <WindowFrame windowKey="resume">
       <div id="window-header">
         <WindowControls windowId="resume" />
-        <h2>Resume.pdf</h2>
+        <h2 className="text-foreground">Resume.pdf</h2>
 
         <a
           href={resumePdf}
