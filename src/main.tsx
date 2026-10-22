@@ -12,7 +12,7 @@ import App from "./App.tsx";
     | "system"
     | null;
   const preference = stored ?? "system";
-  const systemDark = window.matchMedia("(prefers-color-scheme: dark").matches;
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const isDark =
     preference === "dark" || (preference === "system" && systemDark);
   if (isDark) document.documentElement.classList.add("dark");

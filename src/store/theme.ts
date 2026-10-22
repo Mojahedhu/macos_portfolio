@@ -9,9 +9,11 @@ interface ThemeStore {
   resolvedTheme: () => "light" | "dark";
 }
 
+const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
 /** Reads the OS preference */
 const getSystemTheme = (): "dark" | "light" =>
-  window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  mediaQuery.matches ? "dark" : "light";
 
 /** Applies/removes the '.dark' class on <html> */
 export const applyTheme = (theme: Theme) => {
@@ -26,20 +28,29 @@ export const applyTheme = (theme: Theme) => {
 };
 
 const useThemeStore = create<ThemeStore>()(
-  immer((set, get) => ({
-    theme: (localStorage.getItem("theme") as Theme) ?? "system",
-    setTheme: (theme) => {
-      set((state) => {
-        state.theme = theme;
-      });
-      localStorage.setItem("theme", theme);
-      applyTheme(theme);
-    },
-    resolvedTheme: () => {
-      const { theme } = get();
-      return theme === "system" ? getSystemTheme() : theme;
-    },
-  })),
+  immer((set, get) => {
+    // Listen for OS system theme changes
+    mediaQuery.addEventListener("change", () => {
+      if (get().theme === "system") {
+        applyTheme("system");
+      }
+    });
+
+    return {
+      theme: (localStorage.getItem("theme") as Theme) ?? "system",
+      setTheme: (theme) => {
+        set((state) => {
+          state.theme = theme;
+        });
+        localStorage.setItem("theme", theme);
+        applyTheme(theme);
+      },
+      resolvedTheme: () => {
+        const { theme } = get();
+        return theme === "system" ? getSystemTheme() : theme;
+      },
+    };
+  }),
 );
 
 export default useThemeStore;
