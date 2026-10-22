@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
 
 type ToggleAppProps = {
-  id: WindowKey;
+  id: string;
   canOpen: boolean;
 };
 
@@ -69,7 +69,8 @@ const Dock = () => {
   const toggleApp = ({ id, canOpen }: ToggleAppProps) => {
     if (!canOpen) return;
 
-    const window = windows[id];
+    const windowKey = id as WindowKey;
+    const window = windows[windowKey];
     if (!window) {
       console.warn(`Window with id ${id} not found`);
       return;
