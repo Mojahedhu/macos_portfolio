@@ -2,11 +2,13 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 
+/* ── Variable-font helpers ────────────────────────────────────── */
 const FONT_WEIGHTS = {
   subtitle: { min: 100, max: 400, default: 100 },
   title: { min: 400, max: 900, default: 400 },
 };
 
+/* Render text with per-character variable-font weights on hover */
 const renderText = (
   text: string,
   className: string,
@@ -28,6 +30,7 @@ const Welcome = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLHeadingElement | null>(null);
 
+  /* Variable-font hover effect — desktop only*/
   useGSAP(
     () => {
       const attachHoverEffect = (
@@ -87,19 +90,24 @@ const Welcome = () => {
 
   return (
     <section ref={containerRef} id="welcome">
+      {/* ── Desktop hero ──────── */}
       <p ref={subtitleRef}>
         {renderText(
           "Hey, I'm Mojahed welcome to my",
-          "text-3xl font-georama",
+          "max-sm:text-2xl text-3xl font-georama",
           100,
         )}
       </p>
       <h1 ref={titleRef} className="mt-7">
-        {renderText("portfolio.", "text-9xl italic font-georama", 400)}
+        {renderText(
+          "portfolio.",
+          "max-sm:text-7xl text-9xl italic font-georama",
+          400,
+        )}
       </h1>
-      <div className="small-screen">
-        <p>This portfolio is designed for desktop/tablet screens only.</p>
-      </div>
+
+      {/* ── Mobile app-grid home screen ── */}
+      <div className="mobile-home sm:hidden"></div>
     </section>
   );
 };

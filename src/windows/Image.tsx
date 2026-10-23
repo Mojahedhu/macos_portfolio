@@ -12,7 +12,7 @@ const Image = () => {
   const setActiveGallery = useGallery((s) => s.setActiveGallery);
   const galleryList = gallery[activeGallery] || [];
   return (
-    <WindowFrame windowKey="photos" className="min-h-73 min-w-xl">
+    <WindowFrame windowKey="photos" className="sm:min-h-73 sm:min-w-xl">
       <div id="window-header">
         <WindowControls windowId="photos" />
         <div className="flex w-full items-center justify-end gap-3 text-gray-500">

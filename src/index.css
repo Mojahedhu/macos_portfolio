@@ -175,7 +175,7 @@ body {
   nav {
     /* uses CSS variable so it switches with .dark automatically */
     background-color: var(--nav-bg);
-    @apply flex items-center justify-between p-2 px-5 backdrop-blur-3xl select-none;
+    @apply flex items-center justify-between p-2 px-5 backdrop-blur-3xl select-none max-sm:hidden;
 
     div {
       @apply flex items-center gap-5 max-sm:w-full max-sm:justify-center;
@@ -216,8 +216,9 @@ body {
     @apply rounded p-1 hover:cursor-default hover:bg-[#e5e5e5];
   }
 
+  /* ── Welcome ─────────────────────────────────────────────────────────────── */
   #welcome {
-    @apply absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-gray-200 select-none max-sm:h-screen max-sm:w-full max-sm:px-10;
+    @apply absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-gray-200 select-none;
 
     .small-screen {
       @apply absolute top-10 m-7 rounded-md bg-red-300/20 p-3 backdrop-blur-lg sm:hidden;
@@ -228,11 +229,13 @@ body {
     }
   }
 
+  /* ── Dock ────────────────────────────────────────────────────────────────── */
   #dock {
-    @apply absolute bottom-5 left-1/2 z-50 -translate-x-1/2 select-none max-sm:hidden;
+    @apply absolute bottom-5 left-1/2 z-50 -translate-x-1/2 select-none max-sm:w-full;
 
     .dock-container {
-      @apply bg-card/20 flex items-end justify-between gap-1.5 rounded-2xl p-1.5 backdrop-blur-md;
+      @apply bg-card/20 flex items-end justify-between gap-1.5 rounded-2xl p-1.5 backdrop-blur-md max-sm:w-full max-sm:rounded-3xl max-sm:px-3;
+      /* @apply max-sm:w-full max-sm:rounded-3xl max-sm:px-3; */
     }
 
     .tooltip {
@@ -240,7 +243,7 @@ body {
     }
 
     .dock-icon {
-      @apply 3xl:size-20 size-14 cursor-pointer;
+      @apply 3xl:size-20 size-14 cursor-pointer max-sm:size-full;
 
       img {
         @apply object-cover object-center;
@@ -248,6 +251,7 @@ body {
     }
   }
 
+  /* ── Window controls ─────────────────────────────────────────────────────── */
   #window-controls {
     @apply flex gap-2;
 
@@ -264,12 +268,19 @@ body {
     }
   }
 
-  #window-header {
-    @apply border-border bg-muted text-muted-foreground flex items-center justify-between rounded-t-lg border-b px-4 py-3 text-sm select-none;
+  /* Mobile back button (shown instead of traffic lights on small screens) */
+  .mobile-back-btn {
+    @apply text-primary flex cursor-pointer items-center gap-0.5 text-sm font-medium;
   }
 
+  /* ── Window header ───────────────────────────────────────────────────────── */
+  #window-header {
+    @apply border-border bg-muted text-muted-foreground hidden items-center justify-between rounded-t-lg border-b px-4 py-3 text-sm select-none sm:flex;
+  }
+
+  /* ── Safari ──────────────────────────────────────────────────────────────── */
   #safari {
-    @apply bg-card absolute top-40 left-2/12 w-4xl overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
+    @apply bg-card absolute top-40 left-2/12 hidden w-4xl overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl sm:absolute;
 
     .search {
       @apply border-border bg-card flex w-2/3 items-center gap-3 rounded-lg border px-3 py-2;
@@ -317,6 +328,59 @@ body {
     }
   }
 
+  #mobile-safari {
+    @apply bg-card absolute top-0 z-60 h-screen w-screen overflow-y-auto pt-20 select-none sm:hidden;
+
+    .blog {
+      @apply bg-card mx-auto max-w-3xl p-5;
+
+      h2 {
+        @apply mb-10 text-xl font-bold text-pink-600;
+      }
+
+      .blog-post {
+        @apply grid grid-cols-12 space-x-5;
+
+        img {
+          @apply size-full rounded-md object-cover;
+        }
+
+        .content {
+          @apply col-span-9 space-y-3;
+
+          p {
+            @apply text-muted-foreground text-xs;
+          }
+
+          h3 {
+            @apply text-base font-semibold;
+          }
+
+          .url {
+            @apply flex items-center gap-3 text-xs text-blue-600 hover:underline;
+          }
+        }
+      }
+    }
+
+    footer {
+      @apply border-border bg-muted fixed inset-x-0 bottom-0 w-full rounded-t-xl border-t px-5 pt-2 pb-5;
+
+      .search {
+        @apply border-border bg-card flex w-full items-center gap-3 rounded-lg border px-3 py-2;
+
+        input {
+          @apply outline-none placeholder:text-gray-400;
+        }
+      }
+
+      div {
+        @apply mt-5 flex flex-wrap items-center justify-between gap-5;
+      }
+    }
+  }
+
+  /* ── Terminal ────────────────────────────────────────────────────────────── */
   #terminal {
     @apply bg-card absolute top-32 left-1/12 w-xl overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
 
@@ -363,6 +427,7 @@ body {
     }
   }
 
+  /* ── Contact ─────────────────────────────────────────────────────────────── */
   #contact {
     @apply bg-card absolute top-60 left-5/12 max-w-2xl overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
 
@@ -391,6 +456,7 @@ body {
     }
   }
 
+  /* ── Photos ──────────────────────────────────────────────────────────────── */
   #photos {
     @apply bg-card absolute top-96 left-1/2 max-w-3xl -translate-y-1/2 overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
 
@@ -453,6 +519,7 @@ body {
     }
   }
 
+  /* ── Resume ──────────────────────────────────────────────────────────────── */
   #resume {
     @apply bg-card absolute top-16 left-7/12 h-fit w-fit overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
 
@@ -479,11 +546,13 @@ body {
     }
   }
 
+  /* ── Finder ──────────────────────────────────────────────────────────────── */
   #finder {
     @apply absolute top-20 left-40 w-3xl overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
 
     .sidebar {
-      @apply border-border bg-muted flex w-48 flex-col space-y-3 border-r p-5;
+      /* @apply border-border bg-muted flex w-48 flex-col space-y-3 border-r p-5; */
+      @apply border-border bg-muted flex w-48 flex-col space-y-3 border-r p-5 max-sm:hidden;
 
       h3 {
         @apply text-muted-foreground mb-1 text-xs font-medium;
@@ -507,12 +576,15 @@ body {
     }
 
     .content {
-      @apply bg-card relative max-w-2xl flex-1 p-8;
+      /* @apply bg-card relative max-w-2xl flex-1 p-8; */
+      @apply bg-card relative max-w-2xl flex-1 p-8 max-sm:p-4;
 
       li {
-        @apply absolute;
+        /* @apply absolute; */
+        @apply absolute max-sm:relative max-sm:inline-flex;
         button {
-          @apply hover:bg-accent flex w-[85%] cursor-pointer flex-col items-center gap-3 rounded-lg py-2 transition-colors duration-500;
+          /* @apply hover:bg-accent flex w-[85%] cursor-pointer flex-col items-center gap-3 rounded-lg py-2 transition-colors duration-500; */
+          @apply hover:bg-accent flex w-[85%] cursor-pointer flex-col items-center gap-3 rounded-lg py-2 transition-colors duration-500 max-sm:w-24;
 
           img {
             @apply relative size-16 object-contain object-center group-hover:scale-105;
@@ -526,6 +598,7 @@ body {
     }
   }
 
+  /* ── Text file viewer ────────────────────────────────────────────────────── */
   #txtfile {
     @apply bg-card absolute top-36 right-32 w-md overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
 
@@ -534,6 +607,7 @@ body {
     }
   }
 
+  /* ── Image file viewer ───────────────────────────────────────────────────── */
   #imgfile {
     @apply bg-card absolute top-40 left-2/12 w-xl overflow-hidden rounded-xl shadow-2xl drop-shadow-2xl;
 
@@ -552,6 +626,7 @@ body {
     }
   }
 
+  /* ── Desktop folder icons ────────────────────────────────────────────────── */
   #home {
     @apply relative z-0 max-sm:hidden;
 
