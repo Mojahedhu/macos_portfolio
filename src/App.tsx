@@ -12,6 +12,7 @@ import {
   Image,
 } from "@/windows";
 import gsap from "gsap";
+import { MobileNavBar } from "./components/mobile";
 
 gsap.registerPlugin(Draggable);
 
@@ -20,6 +21,7 @@ function App() {
     <>
       <main id="center">
         <Navbar />
+        <MobileNavBar />
         <Welcome />
         <Dock />
         <Terminal />

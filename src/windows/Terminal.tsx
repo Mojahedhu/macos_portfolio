@@ -30,7 +30,7 @@ const Terminal = () => {
 
               <ul className="">
                 {items.map((item, i) => (
-                  <li key={`${item}-${i}`}>
+                  <li key={`${item}-${i.toFixed()}`}>
                     {item}
                     {i < items.length - 1 ? "," : ""}
                   </li>

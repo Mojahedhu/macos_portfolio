@@ -2,21 +2,20 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 
+/* ── Variable-font helpers ────────────────────────────────────── */
 const FONT_WEIGHTS = {
   subtitle: { min: 100, max: 400, default: 100 },
   title: { min: 400, max: 900, default: 400 },
 };
 
-const renderText = (
-  text: string,
-  className: string,
-  baseWeight: number = 400,
-) => {
+/* Render text with per-character variable-font weights on hover */
+const renderText = (text: string, className: string, baseWeight = 400) => {
+  // eslint-disable-next-line @typescript-eslint/no-misused-spread
   return [...text].map((char, i) => (
     <span
-      key={`${char}-${i}`}
-      className={`${className}`}
-      style={{ fontVariationSettings: `'wght' ${baseWeight}` }}
+      key={`${char}-${i.toFixed()}`}
+      className={className}
+      style={{ fontVariationSettings: `'wght' ${baseWeight.toFixed()}` }}
     >
       {char === " " ? "\u00A0" : char}
     </span>
@@ -28,6 +27,7 @@ const Welcome = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLHeadingElement | null>(null);
 
+  /* Variable-font hover effect — desktop only*/
   useGSAP(
     () => {
       const attachHoverEffect = (
@@ -51,7 +51,7 @@ const Welcome = () => {
               duration: 0.2,
               ease: "power2.out",
               overwrite: "auto",
-              fontVariationSettings: `'wght' ${targetWeight}`,
+              fontVariationSettings: `'wght' ${targetWeight.toFixed()}`,
             });
           });
         };
@@ -61,7 +61,7 @@ const Welcome = () => {
               duration: 0.35,
               ease: "power2.out",
               overwrite: "auto",
-              fontVariationSettings: `'wght' ${base}`,
+              fontVariationSettings: `'wght' ${base.toFixed()}`,
             });
           });
         };
@@ -87,19 +87,24 @@ const Welcome = () => {
 
   return (
     <section ref={containerRef} id="welcome">
+      {/* ── Desktop hero ──────── */}
       <p ref={subtitleRef}>
         {renderText(
           "Hey, I'm Mojahed welcome to my",
-          "text-3xl font-georama",
+          "max-sm:text-2xl text-3xl font-georama",
           100,
         )}
       </p>
       <h1 ref={titleRef} className="mt-7">
-        {renderText("portfolio.", "text-9xl italic font-georama", 400)}
+        {renderText(
+          "portfolio.",
+          "max-sm:text-7xl text-9xl italic font-georama",
+          400,
+        )}
       </h1>
-      <div className="small-screen">
-        <p>This portfolio is designed for desktop/tablet screens only.</p>
-      </div>
+
+      {/* ── Mobile app-grid home screen ── */}
+      <div className="mobile-home sm:hidden"></div>
     </section>
   );
 };

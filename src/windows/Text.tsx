@@ -4,7 +4,8 @@ import useWindowStore from "@/store/window";
 
 const Text = () => {
   const windows = useWindowStore((s) => s.windows);
-  const data = windows.txtfile?.data as TxtFile;
+  const data = windows.txtfile.data as TxtFile;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!data) return null;
   const { name, image, subtitle, description } = data;
 
@@ -27,7 +28,7 @@ const Text = () => {
         {Array.isArray(description) && description.length > 0 ? (
           <div className="text-muted-foreground space-y-3 text-base leading-relaxed">
             {description.map((para, idx) => (
-              <p key={`para-${idx}`}>{para}</p>
+              <p key={`para-${idx.toFixed()}`}>{para}</p>
             ))}
           </div>
         ) : null}

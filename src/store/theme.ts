@@ -37,6 +37,7 @@ const useThemeStore = create<ThemeStore>()(
     });
 
     return {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       theme: (localStorage.getItem("theme") as Theme) ?? "system",
       setTheme: (theme) => {
         set((state) => {

@@ -98,7 +98,7 @@ export interface WorkLocation extends LocationBase<"work"> {
 }
 
 export interface AboutLocation extends LocationBase<"about"> {
-  children: Array<ImgFile | TxtFile>;
+  children: (ImgFile | TxtFile)[];
 }
 
 export interface ResumeLocation extends LocationBase<"resume"> {
