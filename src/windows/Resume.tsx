@@ -31,7 +31,9 @@ const Resume = () => {
           type="button"
           aria-label="Previous page"
           disabled={page <= 1}
-          onClick={() => setPage((prev) => Math.max(1, prev - 1))}
+          onClick={() => {
+            setPage((prev) => Math.max(1, prev - 1));
+          }}
           className="cursor-pointer disabled:opacity-50"
         >
           <ChevronLeft className="icon" />
@@ -41,7 +43,9 @@ const Resume = () => {
           type="button"
           aria-label="Next page"
           disabled={page >= numPages}
-          onClick={() => setPage((prev) => Math.min(numPages, prev + 1))}
+          onClick={() => {
+            setPage((prev) => Math.min(numPages, prev + 1));
+          }}
           className="cursor-pointer disabled:opacity-50"
         >
           <ChevronRight className="icon" />

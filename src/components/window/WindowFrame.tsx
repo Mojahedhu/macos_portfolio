@@ -26,7 +26,12 @@ const WindowFrame = ({
   const sectionRef = useRef<HTMLDivElement>(null);
 
   /** Returns true when the viewport is narrower than Tailwind's `sm` breakpoint. */
-  const isMobile = useMediaQuery({ query: "(max-width: 639px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+
+  /** Returns true when user requested reduced motion in their OS settings. */
+  const prefersReducedMotion = useMediaQuery({
+    query: "(prefers-reduced-motion: reduce)",
+  });
 
   /* ── Open / close animation ─────────────────────────────────────────────── */
   useGSAP(
@@ -35,12 +40,30 @@ const WindowFrame = ({
 
       if (!isOpen || !element) return;
 
+      // Skip all scale and slide tweens if reduced motion is preferred
+      if (prefersReducedMotion) {
+        if (!isMobile) {
+          element.style.display = "block";
+        }
+        return;
+      }
+
       if (isMobile) {
         /* iOS-style slide up */
         gsap.fromTo(
           element,
           { y: "100%", opacity: 0 },
-          { y: 0, opacity: 1, ease: "power3.out", duration: 0.35 },
+          {
+            y: 0,
+            opacity: 1,
+            ease: "power3.out",
+            duration: 0.35,
+            clearProps: "transform",
+            onComplete: () => {
+              // Clears the transform style completely so fixed children anchor to viewport again
+              gsap.set(element, { clearProps: "transform" });
+            },
+          },
         );
       } else {
         element.style.display = "block";
@@ -63,7 +86,7 @@ const WindowFrame = ({
       }
     },
     {
-      dependencies: [isOpen, isMobile],
+      dependencies: [isOpen, isMobile, prefersReducedMotion],
       revertOnUpdate: true,
       scope: sectionRef,
     },
@@ -84,7 +107,9 @@ const WindowFrame = ({
         trigger: header ?? element,
         bounds: main,
         edgeResistance: 0.5,
-        onPress: () => focusWindow(windowKey),
+        onPress: () => {
+          focusWindow(windowKey);
+        },
       });
 
       // Runs when the window closes, the breakpoint changes, or on unmount

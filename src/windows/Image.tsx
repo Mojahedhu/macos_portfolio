@@ -6,11 +6,19 @@ import { gallery, photosLinks } from "@/constant";
 import { useGallery, type GalleryKey } from "@/store/gallery";
 import clsx from "clsx";
 
+interface Gallery {
+  id: number;
+  img: string;
+  title: string;
+  slug: string;
+}
+
 const Image = () => {
   const openWindow = useWindowStore((s) => s.openWindow);
   const activeGallery = useGallery((s) => s.gallery);
   const setActiveGallery = useGallery((s) => s.setActiveGallery);
-  const galleryList = gallery[activeGallery] || [];
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  const galleryList: Gallery[] = gallery[activeGallery] || [];
   return (
     <WindowFrame windowKey="photos" className="sm:min-h-73 sm:min-w-xl">
       <div id="window-header">
@@ -26,11 +34,13 @@ const Image = () => {
           <h2>Photos</h2>
           <ul>
             {photosLinks.map(({ id, icon, title, slug }) => (
-              <li key={`photo-${id}`}>
+              <li key={`photo-${id.toFixed()}`}>
                 <button
                   type="button"
                   className={clsx(activeGallery === slug ? "active" : "")}
-                  onClick={() => setActiveGallery(slug as GalleryKey)}
+                  onClick={() => {
+                    setActiveGallery(slug as GalleryKey);
+                  }}
                 >
                   <img src={icon} alt={title} />
                   <p>{title}</p>
@@ -43,21 +53,21 @@ const Image = () => {
         <div className="gallery">
           <ul>
             {galleryList.map(({ id, img }) => (
-              <li key={`img-${id}`}>
+              <li key={`img-${id.toFixed()}`}>
                 <button
                   type="button"
-                  onClick={() =>
+                  onClick={() => {
                     openWindow("imgfile", {
                       id,
-                      name: `Gallery Image ${id}`,
+                      name: `Gallery Image ${id.toFixed()}`,
                       icon: "/images/image.png",
                       kind: "file",
                       fileType: "img",
                       imageUrl: img,
-                    })
-                  }
+                    });
+                  }}
                 >
-                  <img src={img} alt={`Gallery Image ${id}`} />
+                  <img src={img} alt={`Gallery Image ${id.toFixed()}`} />
                 </button>
               </li>
             ))}

@@ -67,7 +67,9 @@ const ThemeToggle = () => {
         {THEME_OPTIONS.map(({ label, value, icon }) => (
           <DropdownMenuItem
             key={value}
-            onClick={() => setTheme(value)}
+            onClick={() => {
+              setTheme(value);
+            }}
             className="cursor-pointer gap-2.5"
           >
             <span className="text-muted-foreground">

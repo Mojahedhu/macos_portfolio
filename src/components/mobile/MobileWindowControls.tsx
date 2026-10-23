@@ -13,9 +13,10 @@ const MobileWindowControls = ({ windowId }: MobileWindowControlsProps) => {
       {/* ── Mobile: iOS-style back button ── */}
       <button
         type="button"
-        aria-label="Back"
         className="icon flex flex-1 cursor-pointer items-center gap-2"
-        onClick={() => closeWindow(windowId)}
+        onClick={() => {
+          closeWindow(windowId);
+        }}
       >
         <ChevronLeft size={18} />
         <span className="text-sm text-blue-500">Go Back</span>

@@ -6,7 +6,8 @@ import { useGSAP } from "@gsap/react";
 import clsx from "clsx";
 import { Draggable } from "gsap/Draggable";
 
-const projects = locations.work?.children ?? [];
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+const projects = locations.work.children ?? [];
 
 const Home = () => {
   const openWindow = useWindowStore((s) => s.openWindow);
@@ -24,12 +25,14 @@ const Home = () => {
       <ul>
         {projects.map((project) => (
           <li
-            key={`project-${project.id}`}
+            key={`project-${project.id.toFixed()}`}
             className={clsx("group folder", project.windowPosition)}
           >
             <button
               type="button"
-              onClick={() => handleOpenProjectFolder(project)}
+              onClick={() => {
+                handleOpenProjectFolder(project);
+              }}
             >
               <img src="/images/folder.png" alt={project.name} />
               <p>{project.name}</p>

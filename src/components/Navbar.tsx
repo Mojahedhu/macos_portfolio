@@ -13,10 +13,12 @@ const NavBar = () => {
 
         <ul>
           {navLinks.map(({ name, id, type }) => (
-            <li key={`link-${id}`}>
+            <li key={`link-${id.toFixed()}`}>
               <button
                 type="button"
-                onClick={() => openWindow(type as WindowKey)}
+                onClick={() => {
+                  openWindow(type as WindowKey);
+                }}
               >
                 <p>{name}</p>
               </button>
@@ -28,12 +30,15 @@ const NavBar = () => {
       <div>
         <ul>
           {navIcons.map(({ id, img }) => (
-            <li key={`icon-${id}`} className="flex items-center justify-center">
+            <li
+              key={`icon-${id.toFixed()}`}
+              className="flex items-center justify-center"
+            >
               <button type="button">
                 <img
                   src={img}
                   className="icon dark:invert"
-                  alt={`icon-${id}`}
+                  alt={`icon-${id.toFixed()}`}
                 />
               </button>
             </li>

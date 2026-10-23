@@ -14,7 +14,9 @@ const WindowControls = ({ windowId }: WindowControlsProps) => {
           type="button"
           aria-label="Close"
           className="close"
-          onClick={() => closeWindow(windowId)}
+          onClick={() => {
+            closeWindow(windowId);
+          }}
         />
         <div className="minimize" />
         <div className="maximize" />

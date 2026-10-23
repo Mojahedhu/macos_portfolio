@@ -5,8 +5,9 @@ import { PlusIcon, ShareIcon, SquarePenIcon } from "lucide-react";
 
 const ImageWindowViewer = () => {
   const windows = useWindowStore((s) => s.windows);
-  const data = windows.imgfile?.data as ImgFile;
+  const data = windows.imgfile.data as ImgFile;
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!data) return null;
   const { name, imageUrl } = data;
   return (

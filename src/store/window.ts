@@ -11,11 +11,11 @@ export type WindowKey =
   | "txtfile"
   | "imgfile";
 
-type Window = {
+interface Window {
   data: unknown;
   zIndex: number;
   isOpen: boolean;
-};
+}
 
 interface WindowStore {
   windows: Record<WindowKey, Window>;
@@ -32,6 +32,7 @@ const useWindowStore = create<WindowStore>()(
     openWindow: (key, data = null) => {
       set((state) => {
         const win = state.windows[key];
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!win) {
           console.warn(`[OpenWindow]:: Window with key ${key} not found`);
           return;
@@ -45,6 +46,7 @@ const useWindowStore = create<WindowStore>()(
     closeWindow: (key) => {
       set((state) => {
         const win = state.windows[key];
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!win) {
           console.warn(`[CloseWindow]:: Window with key ${key} not found`);
           return;
@@ -57,6 +59,7 @@ const useWindowStore = create<WindowStore>()(
     focusWindow: (key) => {
       set((state) => {
         const win = state.windows[key];
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!win) {
           console.warn(`[FocusWindow]:: Window with key ${key} not found`);
           return;

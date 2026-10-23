@@ -17,7 +17,7 @@ import { MobileWindowControls } from "@/components/mobile";
 import { useMediaQuery } from "react-responsive";
 
 const Safari = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 639px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
   return (
     <WindowFrame windowKey="safari">
       {/* Desktop Header */}

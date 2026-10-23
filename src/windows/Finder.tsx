@@ -24,25 +24,30 @@ const Finder = () => {
   const activeType = useLocationStore((state) => state.activeLocationKey);
   const activeLocation =
     typeof activeType === "number"
-      ? locations["work"].children.find((child) => child.id === activeType)
+      ? locations.work.children.find((child) => child.id === activeType)
       : locations[activeType];
 
   const openItem = (item: ProjectFolder | FinderFile) => {
     if ("fileType" in item && item.fileType === "pdf") {
-      return openWindow("resume");
+      openWindow("resume");
+      return;
     }
     if ("fileType" in item && item.fileType === "txt") {
-      return openWindow("txtfile", item);
+      openWindow("txtfile", item);
+      return;
     }
     if ("fileType" in item && item.fileType === "img") {
-      return openWindow("imgfile", item);
+      openWindow("imgfile", item);
+      return;
     }
 
     if (item.kind === "folder") {
       if ("type" in item) {
-        return setActiveLocationK(item.type as LocationType);
+        setActiveLocationK(item.type as LocationType);
+        return;
       }
-      return setActiveLocationK(item.id);
+      setActiveLocationK(item.id);
+      return;
     }
     if (
       "fileType" in item &&
@@ -72,10 +77,15 @@ const Finder = () => {
               : item.type === activeType;
           return (
             <li
-              key={`${item.id}-${item.kind}`}
+              key={`${item.id.toFixed()}-${item.kind}`}
               className={clsx(isActive ? "active" : "non-active")}
             >
-              <button type="button" onClick={() => handleSetActiveType(item)}>
+              <button
+                type="button"
+                onClick={() => {
+                  handleSetActiveType(item);
+                }}
+              >
                 <img src={item.icon} className="w-4" alt={item.name} />
                 <p className="truncate text-sm font-medium">{item.name}</p>
               </button>
@@ -100,8 +110,16 @@ const Finder = () => {
 
         <ul className="content">
           {activeLocation?.children.map((item: ContentItem) => (
-            <li key={`${item.id}-${item.name}`} className={item.position}>
-              <button type="button" onClick={() => openItem(item)}>
+            <li
+              key={`${item.id.toFixed()}-${item.name}`}
+              className={item.position}
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  openItem(item);
+                }}
+              >
                 <img src={item.icon} alt={item.name} />
                 <p>{item.name}</p>
               </button>

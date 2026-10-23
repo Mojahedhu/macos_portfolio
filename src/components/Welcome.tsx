@@ -9,16 +9,13 @@ const FONT_WEIGHTS = {
 };
 
 /* Render text with per-character variable-font weights on hover */
-const renderText = (
-  text: string,
-  className: string,
-  baseWeight: number = 400,
-) => {
+const renderText = (text: string, className: string, baseWeight = 400) => {
+  // eslint-disable-next-line @typescript-eslint/no-misused-spread
   return [...text].map((char, i) => (
     <span
-      key={`${char}-${i}`}
-      className={`${className}`}
-      style={{ fontVariationSettings: `'wght' ${baseWeight}` }}
+      key={`${char}-${i.toFixed()}`}
+      className={className}
+      style={{ fontVariationSettings: `'wght' ${baseWeight.toFixed()}` }}
     >
       {char === " " ? "\u00A0" : char}
     </span>
@@ -54,7 +51,7 @@ const Welcome = () => {
               duration: 0.2,
               ease: "power2.out",
               overwrite: "auto",
-              fontVariationSettings: `'wght' ${targetWeight}`,
+              fontVariationSettings: `'wght' ${targetWeight.toFixed()}`,
             });
           });
         };
@@ -64,7 +61,7 @@ const Welcome = () => {
               duration: 0.35,
               ease: "power2.out",
               overwrite: "auto",
-              fontVariationSettings: `'wght' ${base}`,
+              fontVariationSettings: `'wght' ${base.toFixed()}`,
             });
           });
         };

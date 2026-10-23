@@ -6,10 +6,10 @@ import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Tooltip } from "react-tooltip";
 
-type ToggleAppProps = {
+interface ToggleAppProps {
   id: string;
   canOpen: boolean;
-};
+}
 
 const Dock = () => {
   const dockRef = useRef<HTMLDivElement | null>(null);
@@ -73,6 +73,7 @@ const Dock = () => {
 
     const windowKey = id as WindowKey;
     const window = windows[windowKey];
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!window) {
       console.warn(`Window with id ${id} not found`);
       return;
@@ -103,7 +104,9 @@ const Dock = () => {
                 data-tooltip-content={name}
                 data-tooltip-delay-show={150}
                 disabled={!canOpen}
-                onClick={() => toggleApp({ id, canOpen })}
+                onClick={() => {
+                  toggleApp({ id, canOpen });
+                }}
               >
                 <img
                   src={`/images/${icon}`}
