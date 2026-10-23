@@ -9,8 +9,6 @@ import clsx from "clsx";
 interface Gallery {
   id: number;
   img: string;
-  title: string;
-  slug: string;
 }
 
 const Image = () => {
