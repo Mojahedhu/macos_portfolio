@@ -20,44 +20,43 @@ const Safari = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
   return (
     <WindowFrame windowKey="safari">
-      {/* Desktop Header */}
-      <div id="window-header">
-        <WindowControls windowId="safari" />
-        <PanelLeft className="icon ml-10" />
+      {isMobile ? (
+        <>
+          {/* Mobile Header */}
 
-        <div className="ml-5 flex items-center gap-1">
-          <ChevronLeft className="icon" />
-          <ChevronRight className="icon" />
-        </div>
+          <MobileWindowControls windowId="safari" title="Safari" />
+        </>
+      ) : (
+        <>
+          {/* Desktop Header */}
+          <div id="window-header">
+            <WindowControls windowId="safari" />
+            <PanelLeft className="icon ml-10" />
 
-        <div className="flex-center flex-1 gap-3">
-          <ShieldHalf className="icon" />
-          <div className="search">
-            <Search className="icon" />
-            <input
-              placeholder="Search or enter website name"
-              className="flex-1"
-            />
+            <div className="ml-5 flex items-center gap-1">
+              <ChevronLeft className="icon" />
+              <ChevronRight className="icon" />
+            </div>
+
+            <div className="flex-center flex-1 gap-3">
+              <ShieldHalf className="icon" />
+              <div className="search">
+                <Search className="icon" />
+                <input
+                  placeholder="Search or enter website name"
+                  className="flex-1"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center gap-5">
+              <Share className="icon" />
+              <Plus className="icon" />
+              <Copy className="icon" />
+            </div>
           </div>
-        </div>
-
-        <div className="flex items-center gap-5">
-          <Share className="icon" />
-          <Plus className="icon" />
-          <Copy className="icon" />
-        </div>
-      </div>
-
-      {/* Mobile Header */}
-      <div
-        id="window-window-header"
-        className="relative z-10 flex items-center justify-between gap-5 px-3 pb-3 sm:hidden"
-      >
-        <MobileWindowControls windowId="safari" />
-        <p className="font-georama line-clamp-1 flex-[1.5] text-lg text-black dark:text-white">
-          Safari
-        </p>
-      </div>
+        </>
+      )}
 
       <div className="blog">
         <h2>My Developer Blog</h2>

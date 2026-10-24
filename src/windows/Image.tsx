@@ -5,6 +5,8 @@ import useWindowStore from "@/store/window";
 import { gallery, photosLinks } from "@/constant";
 import { useGallery, type GalleryKey } from "@/store/gallery";
 import clsx from "clsx";
+import { useMediaQuery } from "react-responsive";
+import { MobileWindowControls } from "@/components/mobile";
 
 interface Gallery {
   id: number;
@@ -12,6 +14,7 @@ interface Gallery {
 }
 
 const Image = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
   const openWindow = useWindowStore((s) => s.openWindow);
   const activeGallery = useGallery((s) => s.gallery);
   const setActiveGallery = useGallery((s) => s.setActiveGallery);
@@ -19,34 +22,48 @@ const Image = () => {
   const galleryList: Gallery[] = gallery[activeGallery] || [];
   return (
     <WindowFrame windowKey="photos" className="sm:min-h-73 sm:min-w-xl">
-      <div id="window-header">
-        <WindowControls windowId="photos" />
-        <div className="flex w-full items-center justify-end gap-3 text-gray-500">
-          <Mail className="icon" />
-          <Search className="icon" />
-        </div>
-      </div>
+      {isMobile ? (
+        <>
+          {/* Mobile Header */}
+          <div className="mobile-window-header">
+            <MobileWindowControls windowId="photos" title="Photos" />
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Desktop Header */}
+          <div id="window-header">
+            <WindowControls windowId="photos" />
+            <div className="flex w-full items-center justify-end gap-3 text-gray-500">
+              <Mail className="icon" />
+              <Search className="icon" />
+            </div>
+          </div>
+        </>
+      )}
 
       <div className="min-h-xl flex w-full">
-        <div className="sidebar">
-          <h2>Photos</h2>
-          <ul>
-            {photosLinks.map(({ id, icon, title, slug }) => (
-              <li key={`photo-${id.toFixed()}`}>
-                <button
-                  type="button"
-                  className={clsx(activeGallery === slug ? "active" : "")}
-                  onClick={() => {
-                    setActiveGallery(slug as GalleryKey);
-                  }}
-                >
-                  <img src={icon} alt={title} />
-                  <p>{title}</p>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {!isMobile && (
+          <div className="sidebar">
+            <h2>Photos</h2>
+            <ul>
+              {photosLinks.map(({ id, icon, title, slug }) => (
+                <li key={`photo-${id.toFixed()}`}>
+                  <button
+                    type="button"
+                    className={clsx(activeGallery === slug ? "active" : "")}
+                    onClick={() => {
+                      setActiveGallery(slug as GalleryKey);
+                    }}
+                  >
+                    <img src={icon} alt={title} />
+                    <p>{title}</p>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="gallery">
           <ul>

@@ -1,15 +1,31 @@
+import { MobileWindowControls } from "@/components/mobile";
 import { WindowControls, WindowFrame } from "@/components/window";
 
 import { techStack } from "@/constant";
-import { Check, Flag } from "lucide-react";
+import { clsx } from "cn";
+import { Check, ChevronRight, Flag } from "lucide-react";
+import { useMediaQuery } from "react-responsive";
 
 const Terminal = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
   return (
     <WindowFrame windowKey={"terminal"}>
-      <div id="window-header">
-        <WindowControls windowId="terminal" />
-        <h2>Tech Stack</h2>
-      </div>
+      {isMobile ? (
+        <>
+          {/* Mobile header */}
+          <div id="mobile-window-header">
+            <MobileWindowControls windowId="terminal" title="Terminal" />
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Window header */}
+          <div id="window-header">
+            <WindowControls windowId="terminal" />
+            <h2>Tech Stack</h2>
+          </div>
+        </>
+      )}
 
       <div className="techstack">
         <p>
@@ -24,9 +40,21 @@ const Terminal = () => {
 
         <ul className="content">
           {techStack.map(({ category, items }) => (
-            <li key={category} className="flex items-center">
-              <Check size={20} />
-              <h3>{category}</h3>
+            <li
+              key={category}
+              className={clsx(isMobile ? "flex-col" : "items-center", "flex")}
+            >
+              {isMobile ? (
+                <div className="flex flex-row">
+                  <ChevronRight className="check" size={20} />
+                  <h3>{category}</h3>
+                </div>
+              ) : (
+                <>
+                  <Check className="check" size={20} />
+                  <h3>{category}</h3>
+                </>
+              )}
 
               <ul className="">
                 {items.map((item, i) => (
