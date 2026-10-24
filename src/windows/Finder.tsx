@@ -1,7 +1,7 @@
 import { MobileWindowControls } from "@/components/mobile";
 import MobileBreadcrumb from "@/components/mobile/MobileBreadcrumb";
 import { WindowControls, WindowFrame } from "@/components/window";
-import { locations } from "@/constant";
+import { locations, MOBILE_QUERY } from "@/constant";
 import { useFinderDesktop } from "@/hooks/useFinderDesktop";
 import { useFinderMobile } from "@/hooks/useFinderMobile";
 
@@ -27,7 +27,7 @@ export type MobileNavEntry =
   | { kind: "project"; id: number }; // Screen 3: e.g. Nike (Files list)
 
 const Finder = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
 
   const { popView, popToIndex, navStack, title, content, onTap } =
     useFinderMobile();

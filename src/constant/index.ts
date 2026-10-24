@@ -43,6 +43,17 @@ const navIcons = [
   // },
 ];
 
+const mobileHomeLinks = [
+  {
+    id: "resume",
+    src: "/images/pages.png",
+  },
+  {
+    id: "terminal",
+    src: "/images/terminal.png",
+  },
+];
+
 const dockApps = [
   {
     id: "finder",
@@ -226,6 +237,7 @@ const gallery = {
 export {
   navLinks,
   navIcons,
+  mobileHomeLinks,
   dockApps,
   blogPosts,
   techStack,
@@ -517,3 +529,5 @@ const WINDOW_CONFIG = {
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
+
+export const MOBILE_QUERY = "(max-width: 639px)";

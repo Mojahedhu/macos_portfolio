@@ -12,12 +12,12 @@ import {
   ShieldHalf,
 } from "lucide-react";
 import { WindowControls, WindowFrame } from "@/components/window";
-import { blogPosts } from "@/constant";
+import { blogPosts, MOBILE_QUERY } from "@/constant";
 import { MobileWindowControls } from "@/components/mobile";
 import { useMediaQuery } from "react-responsive";
 
 const Safari = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   return (
     <WindowFrame windowKey="safari">
       {isMobile ? (

@@ -1,12 +1,13 @@
 import { MobileWindowControls } from "@/components/mobile";
 import { WindowControls, WindowFrame } from "@/components/window";
+import { MOBILE_QUERY } from "@/constant";
 import type { ImgFile } from "@/store/location-types";
 import useWindowStore from "@/store/window";
 import { PlusIcon, ShareIcon, SquarePenIcon } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
 
 const ImageWindowViewer = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   const windows = useWindowStore((s) => s.windows);
   const data = windows.imgfile.data as ImgFile;
 
@@ -31,7 +32,7 @@ const ImageWindowViewer = () => {
         </div>
       )}
 
-      <div className="bg-card p-5">
+      <div className="preview">
         {imageUrl ? (
           <div className="w-full">
             <img

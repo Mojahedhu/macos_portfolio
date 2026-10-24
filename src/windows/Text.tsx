@@ -1,11 +1,12 @@
 import { MobileWindowControls } from "@/components/mobile";
 import { WindowControls, WindowFrame } from "@/components/window";
+import { MOBILE_QUERY } from "@/constant";
 import type { TxtFile } from "@/store/location-types";
 import useWindowStore from "@/store/window";
 import { useMediaQuery } from "react-responsive";
 
 const Text = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   const windows = useWindowStore((s) => s.windows);
   const data = windows.txtfile.data as TxtFile;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

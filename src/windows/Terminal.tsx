@@ -1,13 +1,13 @@
 import { MobileWindowControls } from "@/components/mobile";
 import { WindowControls, WindowFrame } from "@/components/window";
 
-import { techStack } from "@/constant";
+import { MOBILE_QUERY, techStack } from "@/constant";
 import { clsx } from "cn";
 import { Check, ChevronRight, Flag } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
 
 const Terminal = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   return (
     <WindowFrame windowKey={"terminal"}>
       {isMobile ? (

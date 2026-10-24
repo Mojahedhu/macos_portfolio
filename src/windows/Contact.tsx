@@ -1,11 +1,11 @@
 import { MobileWindowControls } from "@/components/mobile";
 import { WindowControls, WindowFrame } from "@/components/window";
-import { socials } from "@/constant";
+import { MOBILE_QUERY, socials } from "@/constant";
 import { clsx } from "cn";
 import { useMediaQuery } from "react-responsive";
 
 const Contact = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   return (
     <WindowFrame windowKey="contact">
       {isMobile ? (

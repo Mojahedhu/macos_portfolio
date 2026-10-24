@@ -2,9 +2,10 @@ import { Battery, Wifi } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
 import MobileClock from "./MobileClock";
 import ThemeToggle from "../ThemeToggle";
+import { MOBILE_QUERY } from "@/constant";
 
 const MobileNavBar = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
 
   return isMobile ? (
     <section

@@ -2,7 +2,7 @@ import { Mail, Search } from "lucide-react";
 import WindowControls from "../components/window/WindowControls";
 import WindowFrame from "../components/window/WindowFrame";
 import useWindowStore from "@/store/window";
-import { gallery, photosLinks } from "@/constant";
+import { gallery, MOBILE_QUERY, photosLinks } from "@/constant";
 import { useGallery, type GalleryKey } from "@/store/gallery";
 import clsx from "clsx";
 import { useMediaQuery } from "react-responsive";
@@ -14,7 +14,7 @@ interface Gallery {
 }
 
 const Image = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   const openWindow = useWindowStore((s) => s.openWindow);
   const activeGallery = useGallery((s) => s.gallery);
   const setActiveGallery = useGallery((s) => s.setActiveGallery);
@@ -42,7 +42,8 @@ const Image = () => {
         </>
       )}
 
-      <div className="min-h-xl flex w-full">
+      <div className="min-h-xl flex w-full flex-col sm:flex-row">
+        {/* Desktop sidebar */}
         {!isMobile && (
           <div className="sidebar">
             <h2>Photos</h2>
@@ -62,6 +63,29 @@ const Image = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {/* Mobile Category Selector (Pills / Tabs) */}
+        {isMobile && (
+          <div className="border-border flex w-full items-center gap-2 overflow-x-auto border-b px-5 py-3">
+            {photosLinks.map(({ id, title, slug }) => (
+              <button
+                key={`mobile-photo-${id.toFixed()}`}
+                type="button"
+                onClick={() => {
+                  setActiveGallery(slug as GalleryKey);
+                }}
+                className={clsx(
+                  "cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium whitespace-nowrap transition-colors",
+                  activeGallery === slug
+                    ? "bg-primary text-primary-foreground shadow-xs"
+                    : "bg-muted text-muted-foreground hover:bg-primary/70 hover:text-primary-foreground",
+                )}
+              >
+                {title}
+              </button>
+            ))}
           </div>
         )}
 

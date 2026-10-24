@@ -8,11 +8,12 @@ import resumePdf from "/files/resume.pdf?inline";
 import { useMediaQuery } from "react-responsive";
 import { MobileWindowControls } from "@/components/mobile";
 import PdfPageControl from "@/components/PdfPageControl";
+import { MOBILE_QUERY } from "@/constant";
 
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
 const Resume = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   const [page, setPage] = useState<number>(1);
   const [numPages, setNumPages] = useState<number>(0);
 
@@ -44,10 +45,10 @@ const Resume = () => {
       {isMobile ? (
         <>
           {/* Mobile Header */}
-          <div id="mobile-window-header" className="relative">
+          <div id="mobile-window-header" className="flex flex-col">
             <MobileWindowControls windowId="resume" title="Resume" />
 
-            <div className="absolute top-0 right-0 z-995 flex items-center gap-1">
+            <div className="z-995 flex items-center justify-end gap-1 px-3 pb-3">
               <PdfPageControl
                 resumePdf={resumePdf}
                 page={page}

@@ -1,4 +1,4 @@
-import { dockApps } from "@/constant";
+import { dockApps, MOBILE_QUERY } from "@/constant";
 import useWindowStore, { type WindowKey } from "@/store/window";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -16,7 +16,7 @@ const Dock = () => {
   const windows = useWindowStore((e) => e.windows);
   const closeWindow = useWindowStore((s) => s.closeWindow);
   const openWindow = useWindowStore((s) => s.openWindow);
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
 
   useGSAP(() => {
     const dock = dockRef.current;
