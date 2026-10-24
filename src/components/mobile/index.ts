@@ -1,4 +1,5 @@
 import MobileWindowControls from "./MobileWindowControls";
 import MobileNavBar from "./MobileNavBar";
-
-export { MobileWindowControls, MobileNavBar };
+import MobileClock from "./MobileClock";
+import MobileHome from "./MobileHome";
+export { MobileWindowControls, MobileNavBar, MobileClock, MobileHome };

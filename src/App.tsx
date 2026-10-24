@@ -12,7 +12,7 @@ import {
   Image,
 } from "@/windows";
 import gsap from "gsap";
-import { MobileNavBar } from "./components/mobile";
+import { MobileHome, MobileNavBar } from "./components/mobile";
 
 gsap.registerPlugin(Draggable);
 
@@ -33,6 +33,7 @@ function App() {
         <Contact />
         <Image />
         <Home />
+        <MobileHome />
       </main>
     </>
   );
