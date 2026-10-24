@@ -63,7 +63,11 @@ const ThemeToggle = () => {
         />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="min-w-32.5">
+      <DropdownMenuContent
+        align="end"
+        style={{ zIndex: 9999 }}
+        className="min-w-32.5"
+      >
         {THEME_OPTIONS.map(({ label, value, icon }) => (
           <DropdownMenuItem
             key={value}

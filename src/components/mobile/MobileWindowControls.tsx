@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import useWindowStore from "@/store/window";
 import type { WindowKey } from "@/store/window";
 import { useMediaQuery } from "react-responsive";
+import { MOBILE_QUERY } from "@/constant";
 
 interface MobileWindowControlsProps {
   windowId: WindowKey;
@@ -15,7 +16,7 @@ const MobileWindowControls = ({
   onBack,
 }: MobileWindowControlsProps) => {
   const closeWindow = useWindowStore((s) => s.closeWindow);
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   return (
     <div
       id="mobile-window-header"

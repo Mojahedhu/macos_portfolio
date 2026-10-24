@@ -1,15 +1,29 @@
+import { MobileWindowControls } from "@/components/mobile";
 import { WindowControls, WindowFrame } from "@/components/window";
-import { socials } from "@/constant";
+import { MOBILE_QUERY, socials } from "@/constant";
+import { clsx } from "cn";
+import { useMediaQuery } from "react-responsive";
 
 const Contact = () => {
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   return (
     <WindowFrame windowKey="contact">
+      {isMobile ? (
+        <>
+          {/* Mobile header */}
+          <div id="mobile-window-header">
+            <MobileWindowControls windowId="contact" title="Contact Me" />
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
       <div id="window-header">
         <WindowControls windowId="contact" />
         <h2>Contact Me</h2>
       </div>
 
-      <div className="space-y-5 p-5">
+      <div className={clsx(isMobile ? "content" : "space-y-5 p-5")}>
         <img
           src="/images/mojahed.png"
           alt="mojahed"

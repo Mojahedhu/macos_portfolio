@@ -1,23 +1,14 @@
+import { MOBILE_QUERY, mobileHomeLinks } from "@/constant";
 import useWindowStore, { type WindowKey } from "@/store/window";
 import { useMediaQuery } from "react-responsive";
-const HomeLinks = [
-  {
-    id: "resume",
-    src: "/images/pages.png",
-  },
-  {
-    id: "terminal",
-    src: "/images/terminal.png",
-  },
-];
 
 const MobileHome = () => {
   const openWindow = useWindowStore((s) => s.openWindow);
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
   return isMobile ? (
     <section id="mobile-home">
       <ul>
-        {HomeLinks.map((link) => (
+        {mobileHomeLinks.map((link) => (
           <li key={link.id}>
             <button
               type="button"

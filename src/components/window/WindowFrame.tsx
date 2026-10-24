@@ -6,6 +6,7 @@ import { clsx } from "cn";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { useLayoutEffect, useRef } from "react";
+import { MOBILE_QUERY } from "@/constant";
 
 interface WindowFrameProps {
   windowKey: WindowKey;
@@ -26,7 +27,7 @@ const WindowFrame = ({
   const sectionRef = useRef<HTMLDivElement>(null);
 
   /** Returns true when the viewport is narrower than Tailwind's `sm` breakpoint. */
-  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isMobile = useMediaQuery({ query: MOBILE_QUERY });
 
   /** Returns true when user requested reduced motion in their OS settings. */
   const prefersReducedMotion = useMediaQuery({

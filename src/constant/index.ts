@@ -43,6 +43,17 @@ const navIcons = [
   // },
 ];
 
+const mobileHomeLinks = [
+  {
+    id: "resume",
+    src: "/images/pages.png",
+  },
+  {
+    id: "terminal",
+    src: "/images/terminal.png",
+  },
+];
+
 const dockApps = [
   {
     id: "finder",
@@ -226,6 +237,7 @@ const gallery = {
 export {
   navLinks,
   navIcons,
+  mobileHomeLinks,
   dockApps,
   blogPosts,
   techStack,
@@ -244,7 +256,7 @@ const WORK_LOCATION: WorkLocation = {
     // ▶ Project 1
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "Quick Food 🍔 Website Application",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
@@ -252,30 +264,28 @@ const WORK_LOCATION: WorkLocation = {
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "Quick Food Project.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-            "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
+            "Quick Food is a full-stack restaurant ordering web application. Customers can browse menus, manage a cart, checkout with Stripe, and track their order status.",
+            "The project also ships an embedded Sanity Studio (mounted at /studio-quick-food) for content management, and a role-gated Admin Dashboard for managing orders, products, users, and reviews — all inside the same Next.js application.",
           ],
         },
         {
           id: 2,
-          name: "nike.com",
+          name: "quick-food.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
+          href: "https://foodrestaurantdelivery.netlify.app/",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "nike.png",
+          name: "quick-food.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -297,7 +307,7 @@ const WORK_LOCATION: WorkLocation = {
     // ▶ Project 2
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "3D Portfolio Website",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -305,30 +315,28 @@ const WORK_LOCATION: WorkLocation = {
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "3D Portfolio Website Project.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
+            "This is a modern, interactive 3D developer portfolio website sample. The portfolio showcases work experience, a curated tech stack with interactive 3D models, live client testimonials, featured projects, and a fully functional contact form powered by EmailJS.",
+            "The entire site is animated using GSAP with scroll-triggered effects and features multiple React Three Fiber canvases loading real .glb 3D models with HDR environment lighting.",
           ],
         },
         {
           id: 2,
-          name: "ai-resume-analyzer.com",
+          name: "3d-portfolio-website.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          href: "https://3-d-portfolio-tan-six.vercel.app",
           position: "top-20 left-20",
         },
         {
           id: 4,
-          name: "ai-resume-analyzer.png",
+          name: "3d-portfolio-website.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -350,7 +358,7 @@ const WORK_LOCATION: WorkLocation = {
     // ▶ Project 3
     {
       id: 7,
-      name: "Food Delivery App",
+      name: "E-commerce store",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -358,30 +366,28 @@ const WORK_LOCATION: WorkLocation = {
       children: [
         {
           id: 1,
-          name: "Food Delivery App Project.txt",
+          name: "E-commerce App Project.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
+            "E-commerce Store is a production-grade, full-stack e-commerce application built entirely in TypeScript — from the React frontend to the Express backend.",
+            "It demonstrates real-world patterns including dual payment gateway integration (Stripe + PayPal), webhook-driven order automation, JWT-based auth, Cloudinary media management, and a fully containerized deployment setup with Docker.",
           ],
         },
         {
           id: 2,
-          name: "food-delivery-app.com",
+          name: "mojahedstore.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
+          href: "https://mojahed-store.onrender.com/",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "food-delivery-app.png",
+          name: "E-commerce-app.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -416,7 +422,7 @@ const ABOUT_LOCATION: AboutLocation = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/mojahed.png",
     },
     {
       id: 2,
@@ -425,7 +431,7 @@ const ABOUT_LOCATION: AboutLocation = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/casual.png",
     },
     {
       id: 3,
@@ -434,7 +440,7 @@ const ABOUT_LOCATION: AboutLocation = {
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/conference.png",
     },
     {
       id: 4,
@@ -523,3 +529,5 @@ const WINDOW_CONFIG = {
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
+
+export const MOBILE_QUERY = "(max-width: 639px)";
