@@ -1,6 +1,6 @@
 import { locations } from "@/constant";
-import type { MobileNavEntry } from "@/windows/Finder";
 import { clsx } from "cn";
+import type { MobileNavEntry } from "@/windows/Finder";
 import { ChevronRight } from "lucide-react";
 
 interface MobileBreadcrumbProps {

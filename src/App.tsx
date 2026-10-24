@@ -15,7 +15,7 @@ import gsap from "gsap";
 import { MobileHome, MobileNavBar } from "./components/mobile";
 
 gsap.registerPlugin(Draggable);
-
+// trigger vercel deployment
 function App() {
   return (
     <>
