@@ -29,7 +29,7 @@ const MobileBreadcrumb = ({ navStack, onCrumbTap }: MobileBreadcrumbProps) => {
             <button
               className={clsx(!isLast ? "cursor-pointer" : "")}
               onClick={() => {
-                if (!isLast) onCrumbTap();
+                if (!isLast) onCrumbTap?.();
               }}
             >
               {crumb}
