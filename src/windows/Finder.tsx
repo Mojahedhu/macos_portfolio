@@ -29,7 +29,8 @@ export type MobileNavEntry =
 const Finder = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
 
-  const { popView, navStack, title, content, onTap } = useFinderMobile();
+  const { popView, popToIndex, navStack, title, content, onTap } =
+    useFinderMobile();
   const { activeLocation, onItemClick, onSidebarClick, isSidebarItemActive } =
     useFinderDesktop();
 
@@ -41,16 +42,11 @@ const Finder = () => {
       <h3>{name}</h3>
       <ul>
         {items.map((item: ProjectFolder | FinderLocation) => {
-          // const isActive =
-          //   "position" in item
-          //     ? item.id === activeType
-          //     : item.type === activeType;
-          console.log(isSidebarItemActive(item), item);
           return (
             <li
               key={`${item.id.toFixed()}-${item.kind}`}
               className={clsx(
-                isSidebarItemActive(item) ? "active" : "non-active",
+                isSidebarItemActive(item) ? "active" : "not-active",
               )}
             >
               <button
@@ -81,7 +77,10 @@ const Finder = () => {
 
           {/* Breadcrumb bar */}
           {navStack.length > 1 && (
-            <MobileBreadcrumb navStack={[...navStack]} onCrumbTap={popView} />
+            <MobileBreadcrumb
+              navStack={[...navStack]}
+              onCrumbTap={popToIndex}
+            />
           )}
 
           {/* Icon grid */}

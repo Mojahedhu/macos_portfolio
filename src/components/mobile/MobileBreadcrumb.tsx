@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 
 interface MobileBreadcrumbProps {
   navStack: MobileNavEntry[];
-  onCrumbTap?: () => void;
+  onCrumbTap?: (index: number) => void;
 }
 
 const MobileBreadcrumb = ({ navStack, onCrumbTap }: MobileBreadcrumbProps) => {
@@ -29,7 +29,7 @@ const MobileBreadcrumb = ({ navStack, onCrumbTap }: MobileBreadcrumbProps) => {
             <button
               className={clsx(!isLast ? "cursor-pointer" : "")}
               onClick={() => {
-                if (!isLast && onCrumbTap) onCrumbTap();
+                if (!isLast && onCrumbTap) onCrumbTap(i);
               }}
             >
               {crumb}

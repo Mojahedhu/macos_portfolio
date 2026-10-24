@@ -12,9 +12,7 @@ interface MobileWindowControlsProps {
 const MobileWindowControls = ({
   windowId,
   title,
-  onBack = () => {
-    /* empty */
-  },
+  onBack,
 }: MobileWindowControlsProps) => {
   const closeWindow = useWindowStore((s) => s.closeWindow);
   const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
@@ -28,7 +26,7 @@ const MobileWindowControls = ({
         type="button"
         className="icon flex flex-1 cursor-pointer items-center gap-2"
         onClick={() => {
-          if (isMobile && title !== "Portfolio") {
+          if (isMobile && onBack !== undefined) {
             onBack();
           } else {
             closeWindow(windowId);

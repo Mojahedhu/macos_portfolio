@@ -22,9 +22,17 @@ export const useFinderMobile = () => {
   ]);
   const currentView = navStack[navStack.length - 1];
 
-  const pushView = (entry: MobileNavEntry) => { setNavStack((prev) => [...prev, entry]); };
+  const pushView = (entry: MobileNavEntry) => {
+    setNavStack((prev) => [...prev, entry]);
+  };
 
-  const popView = () => { setNavStack((prev) => (prev.length > 1 ? prev.slice(0, -1) : prev)); };
+  const popView = () => {
+    setNavStack((prev) => (prev.length > 1 ? prev.slice(0, -1) : prev));
+  };
+
+  const popToIndex = (index: number) => {
+    setNavStack((prev) => prev.slice(0, index + 1));
+  };
 
   const title = (() => {
     if (currentView.kind === "root") return "Portfolio";
@@ -86,5 +94,6 @@ export const useFinderMobile = () => {
     content,
     onTap,
     popView,
+    popToIndex,
   };
 };
